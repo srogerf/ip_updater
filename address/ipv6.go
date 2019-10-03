@@ -7,7 +7,9 @@ import (
      "strings"
 )
 func GetIPv6() (string) {
-    res, err := http.Get("http://ip6.me/api/")
+    checkUri := "http://ip6.me/api/"
+
+    res, err := http.Get(checkUri)
     if err != nil  {
       log.Println("failed")
     }

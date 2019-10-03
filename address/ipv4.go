@@ -6,8 +6,12 @@ import (
     "io/ioutil"
      "strings"
 )
+
+
 func GetIPv4() (string) {
-    res, err := http.Get("http://ip4only.me/api/")
+    checkUri := "http://ip4only.me/api/"
+    res, err := http.Get(checkUri)
+
     if err != nil  {
       log.Println("failed")
     }
