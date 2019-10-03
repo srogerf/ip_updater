@@ -2,22 +2,14 @@ package main
 
 import (
     "log"
-    "net/http"
-    "io/ioutil"
-     "strings"
+     "github.com/srogerf/ip_updater/address"
 )
 
 func main() {
-  log.Print("Starting IP importer")
-  res, err := http.Get("http://ip4only.me/api/")
-  if err != nil  {
-    log.Println("failed")
-  }
-  defer res.Body.Close()
+    log.Print("Starting IP importer")
+    ipv4 := address.GetIPv4()
+    ipv6 := address.GetIPv6()
 
-    body, _ := ioutil.ReadAll(res.Body)
-    ipv4 := strings.Split(string(body), ",")[1]
-    log.Printf("Got ipv4 %s\n", ipv4)
-//    bodySlice  := strings.Split(body, ",")
-//    log.Printf("Got %d\n", bodySlice)
+
+    log.Printf("\n    IP4: %s\n    IP6: %s\n\n", ipv4, ipv6)
 }
