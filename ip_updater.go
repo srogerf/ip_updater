@@ -28,8 +28,10 @@ func main() {
 //check if right
     if assigned_ipv4 != dns_ipv4 {
         log.Println("IPv4 requires update")
+        provider.UpdateIPv4(*domain, *host, *api_key, *api_secret, assigned_ipv4)
     } else {
         log.Println("IPv4 does not require update")
+        provider.UpdateIPv4(*domain, *host, *api_key, *api_secret, assigned_ipv4)
     }
 
 //update if out of date

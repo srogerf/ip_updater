@@ -1,0 +1,1 @@
+curl -X PUT "https://api.godaddy.com/v1/domains/${DOMAIN}/records/A/test" -H "accept: application/json" -H "Content-Type: application/json" -H "Authorization: sso-key ${API_KEY}:${API_SECRET}" -d "[ { \"data\": \"${IP_ADDRESS}\", \"port\": 443, \"priority\": 0, \"protocol\": \"string\", \"service\": \"string\", \"ttl\": 600, \"weight\": 0 }]"
