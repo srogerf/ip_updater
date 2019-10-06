@@ -22,8 +22,7 @@ import (
 
 //update the ip address
 func UpdateIPv4(domain string, host string, api_key string, api_secret string, value string)  {
-    name := "test"
-    checkUri := "https://api.godaddy.com/v1/domains/" + domain + "/records/A/" + name
+    checkUri := "https://api.godaddy.com/v1/domains/" + domain + "/records/A/" + host
     sso := "sso-key " + api_key + ":" + api_secret
 
     log.Println("updating %s\n", checkUri)
@@ -67,14 +66,17 @@ func UpdateIPv4(domain string, host string, api_key string, api_secret string, v
 
 // get the current ip of the host from godaddy given the domain and host
 func GetIPv4(domain string, host string, api_key string, api_secret string) (string) {
+  //endpoints and auth
     checkUri := "https://api.godaddy.com/v1/domains/" + domain + "/records/A/"
     sso := "sso-key " + api_key + ":" + api_secret
 
     req, err := http.NewRequest("GET", checkUri, nil)
     if err != nil  {
-      log.Println("failed")
+      log.Printf("Failed to create request: %s\n", err)
+      panic(err)
     }
 
+  //basic header info
     req.Header.Set("Accept", "application/json")
     req.Header.Set("Content-Type", "application/json")
     req.Header.Set("Authorization", sso)
@@ -82,13 +84,12 @@ func GetIPv4(domain string, host string, api_key string, api_secret string) (str
     client := &http.Client{Timeout: time.Second * 10}
     res, err := client.Do(req)
     if err != nil  {
-        log.Println("failed %d\n", err)
+      log.Printf("Failed to send request: %s\n", err)
+      panic(err)
     }
     defer res.Body.Close()
 
-    body, _ := ioutil.ReadAll(res.Body)
-
-//define return and parse body of html
+  //define return and parse body of html
     type ARecord struct {
          Data  string `json:"data"`
          Name  string `json:"name"`
@@ -96,12 +97,12 @@ func GetIPv4(domain string, host string, api_key string, api_secret string) (str
          Record_type  string `json:type"`
     }
     var data []ARecord
+    body, _ := ioutil.ReadAll(res.Body)
     err = json.Unmarshal([]byte(body), &data);
 
     if err != nil  {
-        log.Println("failed %d\n", err)
+      log.Printf("Failed to read return result: %s\n", err)
+      panic(err)
     }
-
-    log.Printf("current ip:  %s\n", data[0].Data)
     return data[0].Data
 }
