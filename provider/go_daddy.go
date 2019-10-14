@@ -96,7 +96,7 @@ func GetIPv4(domain string, host string, apiKey string, apiSecret string) string
 	body, _ := ioutil.ReadAll(res.Body)
 	err = json.Unmarshal([]byte(body), &data)
 	if err != nil {
-		log.Printf("Failed to read return result: %s\n", err)
+		log.Printf("Failed to read return result: %s\n    Body is %s", err, body)
 		panic(err)
 	}
 	log.Println(data)
