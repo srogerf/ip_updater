@@ -16,7 +16,7 @@ func Runner() {
 	gin.SetMode(gin.DebugMode)
 	r := gin.Default()
 
-	r.Use(static.Serve("/", static.LocalFile("./public_html", true)))
+	r.Use(static.Serve("/", static.LocalFile("./frontend/dns-manager/build", true)))
 	// Setup route group for the API
 	api := r.Group("/api")
 	{
