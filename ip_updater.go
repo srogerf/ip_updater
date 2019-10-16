@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"github.com/srogerf/ip_updater/dns"
+	"github.com/srogerf/ip_updater/server"
 	"log"
 )
 
@@ -12,11 +13,12 @@ func main() {
 	apiSecret := flag.String("secret", "none", "godaddy api secret")
 	domain := flag.String("domain", "none", "domain to update")
 	host := flag.String("host", "@", "host to update")
-	server := flag.Bool("daemon", true, "Start as server")
+	daemonize := flag.Bool("daemon", true, "Start as server")
 	flag.Parse()
 
-	if *server {
-		log.Println("starting a server")
+	if *daemonize {
+		server.Runner()
+	} else {
+		dns.Update(*domain, *host, *apiKey, *apiSecret)
 	}
-	dns.Update(*domain, *host, *apiKey, *apiSecret)
 }
