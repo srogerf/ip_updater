@@ -13,7 +13,7 @@ func main() {
 	apiSecret := flag.String("secret", "none", "godaddy api secret")
 	domain := flag.String("domain", "none", "domain to update")
 	host := flag.String("host", "@", "host to update")
-	daemonize := flag.Bool("daemon", true, "Start as server")
+	daemonize := flag.Bool("daemon", false, "Start as server")
 	flag.Parse()
 
 	if *daemonize {
