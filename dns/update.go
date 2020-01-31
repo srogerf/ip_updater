@@ -10,7 +10,7 @@ func Update(domain string, host string, apiKey string, apiSecret string) {
 	//get current ip values
 	assignedIpv4 := address.GetIPv4()
 	assignedIpv6 := address.GetIPv6()
-	log.Printf("\n    assigned IP3: %s\n    assigned IP6: %s\n", assignedIpv4, assignedIpv6)
+	log.Printf("\n    current IP4: %s\n    current IP6: %s\n", assignedIpv4, assignedIpv6)
 
 	//get dns ip values
 	dnsIpv4 := provider.GetIPv4(domain, host, apiKey, apiSecret)
