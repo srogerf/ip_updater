@@ -5,7 +5,11 @@
   "dependencies": {
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "react-router": "*",
+    "react-bootstrap": "*",
+    "bootstrap": "4.4.x",
+    "jquery" : "1.9.x"
   },
   "devDependencies": {},
   "scripts": {

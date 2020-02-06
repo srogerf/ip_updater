@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+//import React from 'react';
 import './index.css';
-import './ProviderData.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './ProviderData';
 
+/*
 class Square extends React.Component {
     render() {
         return (
             <button className="square">
-                {/* TODO */}
             </button>
         );
     }
@@ -52,8 +52,8 @@ class Game extends React.Component {
                     <Board />
                 </div>
                 <div className="game-info">
-                    <div>{/* status */}</div>
-                    <ol>{/* TODO */}</ol>
+                    <div>{}</div>
+                    <ol>{}</ol>
                 </div>
             </div>
         );
@@ -67,4 +67,4 @@ class Game extends React.Component {
 //   document.getElementById('root')
 //;
 
-
+*/
