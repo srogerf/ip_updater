@@ -16,8 +16,11 @@ class GoDaddyDetails extends React.Component {
 //    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = (e) => {
+  handleChange = (e, name) => {
     console.log("change ", e, " times ", this.state.count);
+    console.log(name);
+    console.log("change ", e, " times ", this.state.key);
+    this.setState( {key: "e"});
 
     this.setState({ count: this.state.count + 0 });
   }
@@ -26,20 +29,22 @@ class GoDaddyDetails extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("up");
+    console.log("states ", this.state);
   }
 
   render() {
+    const inputs = [
+      { label: "API Key", default: "Remote key to access REST API", symbol: "key"},
+      { label: "API Secret", default: "Remote secret to access REST API", symbol: "secret"},
+      { label: "DNS Domain", default: "Domain name to update", symbol: "domain"},
+      { label: "DNS Host", default: "Host name to update", symbol: "host"},
+
+    ];
     return (
       <div>
-        <ReButton labelText="API Key" defaultText="Remote key to access REST API"
-                  onChange={(e) => this.handleChange(e)}/>
-        <ReButton labelText="API Secret" defaultText="Remote secret to access REST API"
-                  onChange={this.handleChange}/>
-        <ReButton labelText="DNS Domain" defaultText="Domain name to update"
-                  onChange={this.handleChange}/>
-        <ReButton labelText="DNS Host" defaultText="Host name to update"
-                  onChange={this.handleChange}/>
+        { inputs.map((btn, k) => {
+          return <ReButton key={k} labelText={btn.label} defaultText={btn.default} onChange={(e) => this.handleChange(e, btn.symbol)} />
+        })}
       </div>
     )
   }

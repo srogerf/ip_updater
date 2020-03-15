@@ -1,0 +1,16 @@
+#provider_select {
+    width: 60%;
+}
+#provider_details {
+    width: 50%;
+}
+.re-input-prepend {
+    width: 20%;
+}
+.re-label {
+    width: 100%;
+}
+
+.dns_input {
+    width: 80%;
+}
