@@ -4,6 +4,7 @@ import ReButton from "../riff/ReButton";
 class GoDaddyDetails extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       count: -1,
       key: '',
@@ -19,11 +20,12 @@ class GoDaddyDetails extends React.Component {
   handleChange = (e, name) => {
     // useful: the [] notation allows variables as property names
     this.setState({ [ name ]: e.target.value });
+    this.props.data[name] = e.target.value;
     this.setState({ count: this.state.count + 0 });
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("states ", this.state);
+    //console.log("states ", this.state);
   };
 
   render() {

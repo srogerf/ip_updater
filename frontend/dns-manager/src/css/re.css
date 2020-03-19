@@ -1,8 +1,16 @@
 #provider_select {
+    margin: 10px;
     width: 60%;
 }
 #provider_details {
     width: 50%;
+    margin: 10px;
+}
+div#submit {
+    width: 50%;
+    margin-left: 5px;
+    margin-top: 10px;
+    text-align: right;
 }
 .re-input-prepend {
     width: 20%;
@@ -14,3 +22,5 @@
 .dns_input {
     width: 80%;
 }
+
+
