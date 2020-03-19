@@ -17,20 +17,14 @@ class GoDaddyDetails extends React.Component {
   }
 
   handleChange = (e, name) => {
-    console.log("change ", e, " times ", this.state.count);
-    console.log(name);
-    console.log("change ", e, " times ", this.state.key);
-    this.setState( {key: "e"});
-
+    // useful: the [] notation allows variables as property names
+    this.setState({ [ name ]: e.target.value });
     this.setState({ count: this.state.count + 0 });
-  }
-
-  handleClick = () => {
-  }
+  };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log("states ", this.state);
-  }
+  };
 
   render() {
     const inputs = [
